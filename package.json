@@ -1,0 +1,8 @@
+{
+  "name": "@laattola/cloudsql-backup",
+  "description": "Backup",
+  "type": "module",
+  "scripts": {
+    "dev": "deno run --allow-env --allow-run --allow-read --allow-net main.ts"
+  }
+}
