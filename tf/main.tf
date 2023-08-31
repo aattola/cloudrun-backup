@@ -99,6 +99,7 @@ resource "google_cloud_scheduler_job" "cloudsqlbackup" {
   schedule = "0 0 * * *"
   depends_on = [google_project_service.gcp_services]
   project = var.projectId
+  region = "europe-west3" ## europe-north1 does not support scheduler
   
   http_target {
     uri = "https://europe-north1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/${var.projectId}/jobs/cloudsqlbackup:run"
