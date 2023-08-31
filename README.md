@@ -37,6 +37,30 @@ or if the backups are older than 365 days. (manages costs)
 gcloud storage buckets update gs://tietokanta-backups --versioning --lifecycle-file bucket-lifecycle-config.json
 ```
 
+## Create monitoring for cloud run job failures
+
+### Create monitoring notification channel
+
+```bash
+gcloud alpha monitoring channels create \
+--display-name="Cloud SQL Backup job" \
+--description="Job that does backups of db" \
+--type=email \
+--channel-labels=työ.ukko@hiondigital.com
+```
+
+### Create monitoring policy
+
+Remember to change monitoring-alert-policy.json to match your environment. Especially notificationChannels array
+
+```bash
+gcloud alpha monitoring policies create --policy-from-file=monitoring-alert-policy.json
+```
+
+### TODO
+
+Make infrastructure as code. Terraform or something
+
 ### Script uses deno
 
 Bad developer experience. Types and stuff don't work well with vscode nor webstorm

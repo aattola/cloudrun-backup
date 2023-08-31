@@ -1,0 +1,22 @@
+{
+  "displayName": "Cloud SQL Backup",
+  "userLabels": {},
+  "conditions": [
+    {
+      "displayName": "Cloud SQL Backup Fail",
+      "conditionMonitoringQueryLanguage": {
+        "duration": "0s",
+        "trigger": {
+          "count": 1
+        },
+        "query": "fetch cloud_run_job\n| metric 'run.googleapis.com/job/completed_task_attempt_count'\n| filter (resource.job_name == 'cloudsqlbackup') && (metric.result == 'failed')\n| align rate(1m)\n| every 1m\n| condition val() > 0.01 '1/s'"
+      }
+    }
+  ],
+  "alertStrategy": {
+    "autoClose": "604800s"
+  },
+  "combiner": "OR",
+  "enabled": true,
+  "notificationChannels": ["projects/PROJECTID/notificationChannels/CHANGEME"]
+}
