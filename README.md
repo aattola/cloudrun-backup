@@ -10,6 +10,19 @@ Also make sure service account has the correct permissions to run the job.
 
 ### Note you can also use the Cloud Console to create the job. It it easier
 
+## Terraform
+
+1. Login to gcloud cli with `gcloud auth application-default login`
+2. Set project id with `gcloud config set project <project-id>`
+3. Download latest terraform
+4. cd to terraform folder
+5. run `terraform apply` with just installed terraform
+6. enter asked variables
+7. enjoy deploying. (takes a while)
+8. run gcloud builds submit to build and deploy the container
+
+## gcloud cli commands
+
 ```bash
 gcloud scheduler jobs create http cloudsqlbackup-schedule \
 --location europe-west1 \
@@ -51,15 +64,11 @@ gcloud alpha monitoring channels create \
 
 ### Create monitoring policy
 
-Remember to change monitoring-alert-policy.json to match your environment. Especially notificationChannels array
+Remember to change monitoring-alert-policy.json to match your environment. Especially notificationChannels array. Use the returned data from last command to change array values.
 
 ```bash
 gcloud alpha monitoring policies create --policy-from-file=monitoring-alert-policy.json
 ```
-
-### TODO
-
-Make infrastructure as code. Terraform or something
 
 ### Script uses deno
 
