@@ -43,10 +43,10 @@ gcloud storage buckets update gs://tietokanta-backups --versioning --lifecycle-f
 
 ```bash
 gcloud alpha monitoring channels create \
---display-name="Cloud SQL Backup job" \
---description="Job that does backups of db" \
---type=email \
---channel-labels=työ.ukko@hiondigital.com
+--display-name "Email notif for maansiirto" \
+--description "Job that does backups of db" \
+--type email \
+--channel-labels email_address=maansiirto@hiondigital.com
 ```
 
 ### Create monitoring policy
