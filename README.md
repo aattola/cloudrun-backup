@@ -36,3 +36,8 @@ or if the backups are older than 365 days. (manages costs)
 ```bash
 gcloud storage buckets update gs://tietokanta-backups --versioning --lifecycle-file bucket-lifecycle-config.json
 ```
+
+### Script uses deno
+
+Bad developer experience. Types and stuff don't work well with vscode nor webstorm
+Next time: use regular ts
