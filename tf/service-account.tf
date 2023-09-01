@@ -24,10 +24,6 @@ resource "google_project_iam_member" "storage_admin" {
   member  = "serviceAccount:${google_service_account.sa.email}"
 }
 
-
-
-
-
 resource "google_service_account" "cloud-run-sa" {
   account_id   = "sqlbackup-crun-job-sa"
   display_name = "Service account for Cloud Run"

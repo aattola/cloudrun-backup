@@ -21,6 +21,11 @@ Also make sure service account has the correct permissions to run the job.
 7. enjoy deploying. (takes a while)
 8. go and give permissions to cloud build. https://console.cloud.google.com/cloud-build/settings/service-account?project= Cloud Run and Service Accounts
 9. run `gcloud builds submit` in project root to build and deploy the container
+10. Remember to give sql instance service account permissions to access bucket:
+```bash
+SA_EMAIL="serviceAccount:"$(gcloud sql instances describe CHANGE_ME_TO_DB_NAME --format='value(serviceAccountEmailAddress)' --project $(gcloud config get-value project))
+gcloud projects add-iam-policy-binding $(gcloud config get-value project) --member=$SA_EMAIL --role roles/storage.objectUser
+```
 
 ## gcloud cli commands
 
