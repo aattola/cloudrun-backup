@@ -14,8 +14,16 @@ Also make sure service account has the correct permissions to run the job.
 
 ## Cloud Workflows
 
-1. Create a workflow with ```gcloud workflows deploy sql-backup --source workflow.yaml --location europe-north1 --project $(gcloud config get-value project)``` NOTE: This uses the default service account. You can and you SHOULD change it with `--service-account` flag. Default service account has too many permissions for least privilege principle.
-2. Execute the workflow with ```gcloud workflows execute sql-backup --location europe-north1 --project $(gcloud config get-value project) --data='{"bucket":"BUCKET_NAME","database":"DB_NAME","instance":"SQL_INSTANCE_NAME"}'```
+1. Create a workflow with
+```bash
+gcloud workflows deploy sql-backup --source workflow.yaml --location europe-north1 --project $(gcloud config get-value project)
+```
+NOTE: This uses the default service account. You can and you SHOULD change it with `--service-account` flag. Default service account has too many permissions for least privilege principle. 
+
+2. Execute the workflow. Remember to change the data to match your environment.
+```bash
+gcloud workflows execute sql-backup --location europe-north1 --project $(gcloud config get-value project) --data='{"bucket":"BUCKET_NAME","database":"DB_NAME","instance":"SQL_INSTANCE_NAME"}'
+```
 
 ## Terraform
 
