@@ -27,6 +27,8 @@ steps:
       - "5"
       - --task-timeout
       - 5m
+      - --service-account
+      - sqlbackup-crun-job-sa@$PROJECT_ID.iam.gserviceaccount.com
 
 images:
   - europe-north1-docker.pkg.dev/$PROJECT_ID/konttihalli/cloudsql

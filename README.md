@@ -19,7 +19,8 @@ Also make sure service account has the correct permissions to run the job.
 5. run `terraform apply` with just installed terraform
 6. enter asked variables
 7. enjoy deploying. (takes a while)
-8. run gcloud builds submit to build and deploy the container
+8. go and give permissions to cloud build. https://console.cloud.google.com/cloud-build/settings/service-account?project= Cloud Run and Service Accounts
+9. run `gcloud builds submit` in project root to build and deploy the container
 
 ## gcloud cli commands
 
@@ -74,3 +75,9 @@ gcloud alpha monitoring policies create --policy-from-file=monitoring-alert-poli
 
 Bad developer experience. Types and stuff don't work well with vscode nor webstorm
 Next time: use regular ts
+
+#### Notes
+
+Error:
+`The client is not authorized to make this request`
+Cloud SQL instance does not exist / query is trying to access name of non existing instance

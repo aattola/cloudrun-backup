@@ -61,7 +61,7 @@ resource "google_storage_bucket" "tietokanta-backups" {
   name     = var.backupBucketName
   depends_on = [google_project_service.gcp_services]
   project = var.projectId
-  
+
   public_access_prevention = "enforced"
   # ENABLE AUTOCLASS
   versioning {
@@ -70,24 +70,24 @@ resource "google_storage_bucket" "tietokanta-backups" {
   autoclass {
     enabled = true
   }
-  
-  
+
+
   lifecycle_rule {
     action {
       type = "Delete"
     }
-    
+
     condition {
       num_newer_versions = 365
       with_state = "ARCHIVED"
     }
   }
-  
+
   lifecycle_rule {
     action {
       type = "Delete"
     }
-    
+
     condition {
       age = 365
     }
@@ -100,13 +100,19 @@ resource "google_cloud_scheduler_job" "cloudsqlbackup" {
   depends_on = [google_project_service.gcp_services]
   project = var.projectId
   region = "europe-west3" ## europe-north1 does not support scheduler
-  
+  time_zone = "Europe/Helsinki"
+
   http_target {
     uri = "https://europe-north1-run.googleapis.com/apis/run.googleapis.com/v1/namespaces/${var.projectId}/jobs/cloudsqlbackup:run"
-    
+
     oauth_token {
       service_account_email = google_service_account.sa.email
       scope = "https://www.googleapis.com/auth/cloud-platform"
     }
   }
+}
+
+output "cloud-run-service-account-email" {
+  value = google_service_account.cloud-run-sa.email
+  description = "Make sure to add this service account to cloudbuild.yaml cloud run"
 }

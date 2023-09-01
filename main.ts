@@ -70,6 +70,9 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.error(e);
-  throw e;
+  console.log(e)
+  console.log(e?.response?.data?.error)
+  console.log(e?.response?.data?.error?.message)
+  console.log(e?.response?.data?.error?.errors[0])
+  Deno.exit(1);
 });
