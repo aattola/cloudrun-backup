@@ -1,0 +1,28 @@
+{
+  "attemptDeadline": "180s",
+  "httpTarget": {
+    "body": "eyJhcmd1bWVudCI6InsgXCJidWNrZXRcIjogXCJ0aWV0b2thbnRhLWJhY2t1cHNcIiwgXCJkYXRhYmFzZVwiOiBcInRpZXRva2FudGFcIiwgXCJpbnN0YW5jZVwiOiBcInRpZXRvaW5lbmthbnRhXCIgfSIsImNhbGxMb2dMZXZlbCI6IkxPR19FUlJPUlNfT05MWSJ9",
+    "headers": {
+      "Content-Type": "application/octet-stream",
+      "User-Agent": "Google-Cloud-Scheduler"
+    },
+    "httpMethod": "POST",
+    "oauthToken": {
+      "scope": "https://www.googleapis.com/auth/cloud-platform",
+      "serviceAccountEmail": "185620185544-compute@developer.gserviceaccount.com"
+    },
+    "uri": "https://workflowexecutions.googleapis.com/v1/projects/taikuri/locations/europe-north1/workflows/cloudsqltest/executions"
+  },
+  "name": "projects/taikuri/locations/europe-central2/jobs/workflowscheduldlerkrrrrr",
+  "retryConfig": {
+    "maxBackoffDuration": "3600s",
+    "maxDoublings": 5,
+    "maxRetryDuration": "0s",
+    "minBackoffDuration": "5s"
+  },
+  "schedule": "0 0 * * *",
+  "scheduleTime": "2023-09-01T21:00:00.868929Z",
+  "state": "ENABLED",
+  "timeZone": "Europe/Helsinki",
+  "userUpdateTime": "2023-09-01T12:57:34Z"
+}

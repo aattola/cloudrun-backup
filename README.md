@@ -25,6 +25,8 @@ NOTE: This uses the default service account. You can and you SHOULD change it wi
 gcloud workflows execute sql-backup --location europe-north1 --project $(gcloud config get-value project) --data='{"bucket":"BUCKET_NAME","database":"DB_NAME","instance":"SQL_INSTANCE_NAME"}'
 ```
 
+3. Schedule the workflow to run every so often with Cloud Scheduler from Cloud Console.
+
 ## Terraform
 
 1. Login to gcloud cli with `gcloud auth application-default login`
